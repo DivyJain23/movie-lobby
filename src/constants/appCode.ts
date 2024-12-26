@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 export enum AppError {
-    UNAUTHORIZED = 'Unauthorized',
+    UNAUTHORIZED = 'Unauthorized, use the provided token',
     DB_URL_NOT_FOUND = 'Db url not found',
     DB_NAME_NOT_FOUND = 'Db name not found',
     MOVIE_ALREADY_EXIST = 'Movie already exist with this title',
@@ -11,7 +11,8 @@ export enum AppError {
     RATING_NOT_FOUND = 'Rating not found',
     STREAMING_LINK_NOT_FOUND = 'Streaming link not found',
     MOVIE_NOT_FOUND = 'Movie not found',
-    INVALID_MOVIE_ID = 'Invalid movie id'
+    INVALID_MOVIE_ID = 'Invalid movie id',
+    ADMIN_ROLE_REQUIRED= 'You must have admin privileges to access this resource.'
 }
 
 export enum ErrorCode {
