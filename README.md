@@ -30,6 +30,7 @@
 1. Postman Collection: Documentation for APIs is available via a Postman collection. You can find the collection in the /dump folder.
 2. ESLint Integration: The project includes ESLint for consistent code styling and error detection. Run npm run lint to check for linting issues.
 3. Caching with Redis: Redis has been integrated for caching. Ensure Redis is properly configured by setting the relevant environment variables in the .env file.
+4. Test Cases: Test cases using Mocha and Chai have been added to verify the functionality of the API. The tests cover various scenarios, including get, movie search, creation, update, and deletion.
 
 ### Additional Commands:
 1. Run the project in development mode: `$ npm run dev`
