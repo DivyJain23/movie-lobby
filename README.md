@@ -18,3 +18,19 @@
 ### Steps to run project:
 - `$ npm run build`
 - `$ npm run start`
+
+### Environment Variables:
+- The project requires environment variables to be configured. A .env.example file has been added for reference
+
+### Setup Instructions:
+1. Copy the .env.example file using this command `$ cp .env.example .env`
+2. Fill in the appropriate values in the .env file.
+
+### Features Added:
+1. Postman Collection: Documentation for APIs is available via a Postman collection. You can find the collection in the /dump folder.
+2. ESLint Integration: The project includes ESLint for consistent code styling and error detection. Run npm run lint to check for linting issues.
+3. Caching with Redis: Redis has been integrated for caching. Ensure Redis is properly configured by setting the relevant environment variables in the .env file.
+
+### Additional Commands:
+1. Run the project in development mode: `$ npm run dev`
+2. Run tests: `$ npm run test`
