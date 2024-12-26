@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "ac1ec624-15ba-4a21-a29c-002f63b019f2",
+		"name": "movie-lobby",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19191353"
+	},
+	"item": [
+		{
+			"name": "Get Movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/v1/movie/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Serach movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/v1/movie/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzUyMTg1ODF9.LulRBHXDhAmrbKXqCec2J3p8iaUM_75tSa5u9vASOeQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"The Matrix 16\",\n  \"genre\": \"Action 1\",\n  \"rating\": 8,\n  \"streaming_link\": \"https://example.com/the-matrix\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/v1/movie/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzUyMTg1ODF9.LulRBHXDhAmrbKXqCec2J3p8iaUM_75tSa5u9vASOeQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"The Matrix 12\",\n  \"genre\": \"Action\",\n  \"rating\": 9,\n  \"streaming_link\": \"https://example.com/the-matrix\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/v1/movie/movies/676d2f619afeb5989d19a3e4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"movies",
+						"676d2f619afeb5989d19a3e4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzUyMTg1ODF9.LulRBHXDhAmrbKXqCec2J3p8iaUM_75tSa5u9vASOeQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/v1/movie/movies/676d560653202aed8a67e4b0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"movies",
+						"676d560653202aed8a67e4b0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
