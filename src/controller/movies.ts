@@ -37,9 +37,7 @@ export const getMovies = async (req: Request, res: Response) => {
   try {
     const getData = await createClient.get('movies');
     let movies = JSON.parse(getData);
-    console.log('movies', movies);
     if (!movies?.length) { 
-      console.log('asa');
       movies = await MovieModel.find().sort({ created_at: -1 }); 
       await createClient.set('movies', JSON.stringify(movies));
     }
@@ -89,7 +87,7 @@ export const createMovie = async (req: Request, res: Response) => {
     await createClient.del('movies');
 
     // Return success response with the created movie
-    return res.status(200).json(formatSuccessMessage({ data: savedMovie }));
+    return res.status(200).json(formatSuccessMessage({ savedMovie }));
   } catch (error) {
     console.log('Create Movie: failed', error?.message);
     return res.status(error?.status || 400).json(formatErrorMessage(error));
@@ -101,7 +99,7 @@ export const updateMovie = async (req: Request, res: Response) => {
     // Extract movie ID and details from the request
     const movieId = req.params.id;
     const { title, genre, rating, streaming_link } = req.body;
-
+    console.log("here")
     // Validate required fields
     if (!title) {
       throw { msg: AppError.TITLE_NOT_FOUND, status: ErrorCode.NOT_FOUND };
@@ -144,7 +142,7 @@ export const updateMovie = async (req: Request, res: Response) => {
     await createClient.del('movies');
 
     // Return success response with the updated movie
-    return res.status(200).json(formatSuccessMessage({ data: updatedMovie }));
+    return res.status(200).json(formatSuccessMessage({ updatedMovie }));
   } catch (error) {
     console.log('Update Movie: failed', error?.message);
     return res.status(error?.status || 400).json(formatErrorMessage(error));

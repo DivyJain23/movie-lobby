@@ -24,6 +24,7 @@ connectDb().then(() => {
   app.use('/api/v1', router);
     
   app.listen(config.NODE_ENV, () => {
+    app.emit("serverStarted");
     // eslint-disable-next-line no-console
     console.log('App listening at: ', config.NODE_ENV);
   });
@@ -32,3 +33,4 @@ connectDb().then(() => {
   console.log('Unable to connect to database: ', JSON.stringify(err, null, 2));
 });
 
+export {app};
