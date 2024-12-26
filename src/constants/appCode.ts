@@ -5,10 +5,12 @@ export enum AppError {
     MOVIE_ALREADY_EXIST = "Movie already exist with this title",
     URL_NOT_FOUND = "Url not found",
     KEYWORD_NOT_FOUND = "Keyword not found",
-    TITLE_NOT_FOUND = "Title not found", // Added error for missing title
-    GENRE_NOT_FOUND = "Genre not found", // Added error for missing genre
-    RATING_NOT_FOUND = "Rating not found", // Added error for missing rating
-    STREAMING_LINK_NOT_FOUND = "Streaming link not found", // Added error for missing streaming link
+    TITLE_NOT_FOUND = "Title not found",
+    GENRE_NOT_FOUND = "Genre not found",
+    RATING_NOT_FOUND = "Rating not found",
+    STREAMING_LINK_NOT_FOUND = "Streaming link not found",
+    MOVIE_NOT_FOUND = "Movie not found",
+    INVALID_MOVIE_ID = "Invalid movie id"
 }
 
 export enum ErrorCode {
