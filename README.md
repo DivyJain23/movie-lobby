@@ -13,7 +13,7 @@
 5. A clone of this repo on your local machine. Repository can be accessed from here - https://github.com/DivyJain23/movie-lobby
 
 #### Package Installation
-- `$ npm install`
+- `$ npm ci`
 
 ### Steps to run project:
 - `$ npm run build`
