@@ -43,7 +43,7 @@ export const getMovies = async (req: Request, res: Response) => {
     }
     return res.status(200).json(formatSuccessMessage({ movies }));
   } catch (error) {
-    console.log('Get Feed: failed', error);
+    console.log('Get Movie: failed', error);
     return res.status(error?.status || 400).json(formatErrorMessage(error));
   }
 };
