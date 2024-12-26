@@ -1,10 +1,14 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose'; // Import mongoose for ObjectId validation
+import * as redis from 'redis';
 
 import { formatErrorMessage, formatSuccessMessage } from '../common/handleResponse';
 import { MovieModel } from '../models/movies';
-import { IMovie } from '../interface';
 import { AppError, ErrorCode } from '../constants/appCode';
+import { config } from '../config';
+const redisUrl = `redis://${config.REDIS.HOST}:${config.REDIS.PORT}`;
+const createClient = redis.createClient({ url: redisUrl });
+createClient.connect();
 
 export const searchMovies = async (req: Request, res: Response) => {
   try {
@@ -31,7 +35,14 @@ export const searchMovies = async (req: Request, res: Response) => {
 
 export const getMovies = async (req: Request, res: Response) => {
   try {
-    const movies = await MovieModel.find().sort({ created_at: -1 }); 
+    const getData = await createClient.get('movies');
+    let movies = JSON.parse(getData);
+    console.log('movies', movies);
+    if (!movies?.length) { 
+      console.log('asa');
+      movies = await MovieModel.find().sort({ created_at: -1 }); 
+      await createClient.set('movies', JSON.stringify(movies));
+    }
     return res.status(200).json(formatSuccessMessage({ movies }));
   } catch (error) {
     console.log('Get Feed: failed', error);
@@ -75,6 +86,7 @@ export const createMovie = async (req: Request, res: Response) => {
     // Create a new movie document and save it to the database
     const newMovie = new MovieModel(moviePayload);
     const savedMovie = await newMovie.save();
+    await createClient.del('movies');
 
     // Return success response with the created movie
     return res.status(200).json(formatSuccessMessage({ data: savedMovie }));
@@ -129,6 +141,7 @@ export const updateMovie = async (req: Request, res: Response) => {
 
     // Save updated movie data
     const updatedMovie = await movie.save();
+    await createClient.del('movies');
 
     // Return success response with the updated movie
     return res.status(200).json(formatSuccessMessage({ data: updatedMovie }));
@@ -157,7 +170,7 @@ export const deleteMovie = async (req: Request, res: Response) => {
 
     // Delete the movie
     await MovieModel.deleteOne({ _id: movieId }); // Delete the movie from the database
-
+    await createClient.del('movies');
     // Return success response
     return res.status(200).json(formatSuccessMessage({ message: 'Movie deleted successfully' }));
   } catch (error) {
