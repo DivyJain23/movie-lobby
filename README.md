@@ -35,3 +35,10 @@
 ### Additional Commands:
 1. Run the project in development mode: `$ npm run dev`
 2. Run tests: `$ npm run test`
+
+### Protected Routes:
+Some routes are restricted and can only be accessed by an Admin for creating, updating, or deleting resources. To access these routes, include the following in the request:
+1. Add an Authorization header in your Postman requests.
+2. Use the token provided below as the value for the Authorization header: 
+`$ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzUyMTg1ODF9.LulRBHXDhAmrbKXqCec2J3p8iaUM_75tSa5u9vASOeQ`
+
